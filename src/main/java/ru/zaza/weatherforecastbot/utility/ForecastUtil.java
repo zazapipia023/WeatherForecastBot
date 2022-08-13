@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.Calendar;
 import java.util.Date;
 
 @Slf4j
@@ -105,8 +106,9 @@ public class ForecastUtil {
         str.append("City: " + city.toUpperCase() + "\n\n");
 
         while(!isTomorrow) {
-            Date date = new Date(jsonArray.getJSONObject(i).getLong("dt") * 1000L);
-            if(date.getDay() == new Date().getDay() + 1) {
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTimeInMillis(jsonArray.getJSONObject(i).getLong("dt") * 1000L);
+            if(calendar.get(Calendar.DAY_OF_MONTH) == calendar.get(Calendar.DAY_OF_MONTH) + 1) {
                 isTomorrow = true;
                 break;
             }
@@ -114,11 +116,12 @@ public class ForecastUtil {
         }
 
         while(isTomorrow) {
-            Date date = new Date(jsonArray.getJSONObject(i).getLong("dt") * 1000L);
-            if(date.getDay() == new Date().getDay() + 1) {
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTimeInMillis(jsonArray.getJSONObject(i).getLong("dt") * 1000L);
+            if(calendar.get(Calendar.DAY_OF_MONTH) == Calendar.getInstance().get(Calendar.DAY_OF_MONTH) + 1) {
                 object = jsonArray.getJSONObject(i);
 
-                str.append("Date: " + date.getDate() + "." + (date.getMonth() + 1) + ", time: " + date.getHours() + " hours\n")
+                str.append("Date: " + calendar.get(Calendar.MONTH) + "." + calendar.get(Calendar.DAY_OF_MONTH) + ", time: " + calendar.get(Calendar.HOUR) + " hours\n")
                         .append("Temperature: " + object.getJSONObject("main").getDouble("temp") + "°C\n")
                         .append("Feels like: " + object.getJSONObject("main").getDouble("feels_like") + "°C\n")
                         .append("Condition: " + object.getJSONArray("weather").getJSONObject(0).getString("description") + "\n")
