@@ -108,7 +108,7 @@ public class ForecastUtil {
         while(!isTomorrow) {
             Date date = new Date(jsonArray.getJSONObject(i).getLong("dt") * 1000L);
             System.out.println(i + " " + date.getDay() + " " + new Date().getDay());
-            if(date.getDay() == new Date().getDay() + 1 || date.getDay() == (new Date().getDate() - 6)) {
+            if(date.getDay() == new Date().getDay() + 1 || date.getDay() == (new Date().getDay() - 6)) {
                 isTomorrow = true;
                 break;
             }
@@ -117,7 +117,7 @@ public class ForecastUtil {
 
         while(isTomorrow) {
             Date date = new Date(jsonArray.getJSONObject(i).getLong("dt") * 1000L);
-            if(date.getDay() == new Date().getDay() + 1 || date.getDay() == (new Date().getDate() - 6)) {
+            if(date.getDay() == new Date().getDay() + 1 || date.getDay() == (new Date().getDay() - 6)) {
                 object = jsonArray.getJSONObject(i);
 
                 str.append("Date: " + date.getDate() + "." + (date.getMonth() + 1) + ", time: " + date.getHours() + " hours\n")
