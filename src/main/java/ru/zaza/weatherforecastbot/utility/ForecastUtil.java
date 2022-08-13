@@ -107,7 +107,7 @@ public class ForecastUtil {
 
         while(!isTomorrow) {
             Date date = new Date(jsonArray.getJSONObject(i).getLong("dt") * 1000L);
-            System.out.println(i);
+            System.out.println(i + " " + date.getDay() + " " + new Date().getDay());
             if(date.getDay() == new Date().getDay() + 1) {
                 isTomorrow = true;
                 break;
