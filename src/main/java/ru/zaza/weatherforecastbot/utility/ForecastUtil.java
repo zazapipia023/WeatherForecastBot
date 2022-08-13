@@ -105,7 +105,7 @@ public class ForecastUtil {
         str.append("City: " + city.toUpperCase() + "\n\n");
 
         while(!isTomorrow) {
-            Date date = new Date(jsonArray.getJSONObject(i).getLong("dt") * 1000);
+            Date date = new Date(jsonArray.getJSONObject(i).getLong("dt") * 1000L);
             if(date.getDay() == new Date().getDay() + 1) {
                 isTomorrow = true;
                 break;
@@ -114,7 +114,7 @@ public class ForecastUtil {
         }
 
         while(isTomorrow) {
-            Date date = new Date(jsonArray.getJSONObject(i).getLong("dt") * 1000);
+            Date date = new Date(jsonArray.getJSONObject(i).getLong("dt") * 1000L);
             if(date.getDay() == new Date().getDay() + 1) {
                 object = jsonArray.getJSONObject(i);
 
