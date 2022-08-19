@@ -15,7 +15,7 @@ public class ReplyKeyboardMarker {
         KeyboardRow row1 = new KeyboardRow();
         KeyboardRow row2 = new KeyboardRow();
         KeyboardRow row3 = new KeyboardRow();
-        row1.add(new KeyboardButton("Today's forecast"));
+        row1.add(new KeyboardButton("Current forecast"));
         row2.add(new KeyboardButton("Detailed today's forecast"));
         row3.add(new KeyboardButton("Tomorrow's forecast"));
 
