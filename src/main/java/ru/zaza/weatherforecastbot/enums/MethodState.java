@@ -1,7 +1,7 @@
 package ru.zaza.weatherforecastbot.enums;
 
 public enum MethodState {
-    TODAYSFORECAST,
+    CURRENTFORECAST,
     TODAYSDETAILEDFORECAST,
     TOMORROWSFORECAST
 }

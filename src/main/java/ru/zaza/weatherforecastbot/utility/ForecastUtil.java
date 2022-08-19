@@ -20,7 +20,7 @@ public class ForecastUtil {
 
     public String giveForecast(String city, MethodState state) {
         switch (state) {
-            case TODAYSFORECAST -> {
+            case CURRENTFORECAST -> {
                 return giveCurrentForecast(city);
             }
             case TODAYSDETAILEDFORECAST -> {
@@ -38,7 +38,7 @@ public class ForecastUtil {
         if(!output.isEmpty()) {
             JSONObject object = new JSONObject(output);
 
-            return "City: " + city.toUpperCase() + "\n\n" +
+            return city.toUpperCase() + "\n\n" +
                     "Temperature: " + object.getJSONObject("main").getDouble("temp") + "°C\n" +
                     "Feels like: " + object.getJSONObject("main").getDouble("feels_like") + "°C\n" +
                     "Condition: " + object.getJSONArray("weather").getJSONObject(0).getString("description") + "\n" +

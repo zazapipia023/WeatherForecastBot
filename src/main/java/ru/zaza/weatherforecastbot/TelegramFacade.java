@@ -80,10 +80,10 @@ public class TelegramFacade {
                 userRequest.put(message.getChatId(), false);
                 return sendMessage;
             }
-            case "Today's forecast" -> {
+            case "Current forecast" -> {
                 sendMessage.setText("Enter city");
                 userRequest.put(message.getChatId(), true);
-                userMethod.put(message.getChatId(), MethodState.TODAYSFORECAST);
+                userMethod.put(message.getChatId(), MethodState.CURRENTFORECAST);
                 return sendMessage;
             }
             case "Detailed today's forecast" -> {
